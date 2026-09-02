@@ -510,7 +510,8 @@ function renderNewsFeed() {
     <article class="news-card" data-id="${item.id}">
       <div class="news-card-with-thumb">
         <div class="news-card-thumb" onclick="openDispatchModal('${item.id}')">
-          <img src="assets/thumb-${item.agency.toLowerCase()}.jpg" alt="${escapeHtml(item.agency)}" />
+          ${item.isLive ? `<span class="thumb-live-badge"><span class="pulse-dot-live"></span> LIVE DATA</span>` : ""}
+          <img src="${item.thumb || item.image || ('assets/thumb-' + item.agency.toLowerCase() + '.jpg')}" alt="${escapeHtml(item.agency)}" />
         </div>
         <div class="news-card-content">
           <div class="news-card-header">

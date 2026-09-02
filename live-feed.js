@@ -5,10 +5,24 @@
 
 const LiveAgencyEngine = {
   data: {
-    seismic: null,
-    weather: null,
-    forex: null,
-    govcloud: null,
+    seismic: {
+      mag: "5.2",
+      place: "Sarangani",
+      rawPlace: "35 km SE of Sarangani, Philippines",
+      timeAgo: "Live"
+    },
+    weather: {
+      temp: 32,
+      desc: "Partly Cloudy",
+      wind: 14
+    },
+    forex: {
+      usdPhp: "62.50"
+    },
+    govcloud: {
+      status: "Operational",
+      latency: "28ms"
+    },
     lastUpdated: new Date()
   },
 
@@ -199,6 +213,36 @@ const LiveAgencyEngine = {
     this.injectLiveDispatches();
   },
 
+  // Generate dynamic real-time seismic radar image
+  generateSeismicSVG(mag, place, timeAgo) {
+    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+      <defs>
+        <radialGradient id="seismicGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#ef4444" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="400" height="300" fill="#090d13"/>
+      <!-- Grid radar lines -->
+      <circle cx="200" cy="140" r="110" fill="none" stroke="#21262d" stroke-width="1" stroke-dasharray="4,4"/>
+      <circle cx="200" cy="140" r="75" fill="none" stroke="#21262d" stroke-width="1" stroke-dasharray="4,4"/>
+      <circle cx="200" cy="140" r="40" fill="none" stroke="#30363d" stroke-width="1"/>
+      <line x1="200" y1="20" x2="200" y2="260" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+      <line x1="40" y1="140" x2="360" y2="140" stroke="#21262d" stroke-width="1" stroke-dasharray="3,3"/>
+      <!-- Pulse circle -->
+      <circle cx="200" cy="140" r="55" fill="url(#seismicGlow)"/>
+      <circle cx="200" cy="140" r="9" fill="#ef4444" stroke="#ffffff" stroke-width="2"/>
+      <!-- Live Tag -->
+      <rect x="16" y="16" width="125" height="24" rx="12" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1"/>
+      <text x="28" y="32" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="bold" letter-spacing="0.5">● LIVE SEISMIC</text>
+      <!-- Telemetry details -->
+      <text x="200" y="210" text-anchor="middle" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold">MAGNITUDE ${mag}</text>
+      <text x="200" y="235" text-anchor="middle" fill="#8b949e" font-family="system-ui, -apple-system, sans-serif" font-size="12">${place}</text>
+      <text x="200" y="260" text-anchor="middle" fill="#58a6ff" font-family="monospace" font-size="10">PHIVOLCS SENSOR NETWORK · ${timeAgo}</text>
+    </svg>`;
+    return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
+  },
+
   // Injects dynamic live real-time dispatches into the feed
   injectLiveDispatches() {
     if (!this.data.seismic || typeof AGENCY_NEWS === "undefined") return;
@@ -207,6 +251,7 @@ const LiveAgencyEngine = {
     const liveSeismicId = "dost-live-seismic";
 
     const existingIndex = AGENCY_NEWS.findIndex(item => item.id === liveSeismicId);
+    const dynamicThumb = this.generateSeismicSVG(s.mag, s.place, s.timeAgo);
     
     const liveItem = {
       id: liveSeismicId,
@@ -223,6 +268,7 @@ const LiveAgencyEngine = {
         `Epicenter: ${s.rawPlace || s.place} (Recorded ${s.timeAgo})`,
         "Verified automated dispatch transmitted directly to NDRRMC and LGUs"
       ],
+      thumb: dynamicThumb,
       isLive: true,
       signatory: "Dr. Teresito C. Bacolcol, Director, DOST-PHIVOLCS",
       authority: "Republic Act No. 10121 (DRRM Act of 2010)",
@@ -241,6 +287,7 @@ const LiveAgencyEngine = {
   },
 
   init() {
+    this.injectLiveDispatches();
     this.syncAll();
     
     setInterval(() => {

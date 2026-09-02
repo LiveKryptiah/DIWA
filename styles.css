@@ -1648,12 +1648,34 @@ a {
 }
 
 .news-card-thumb {
+  position: relative;
   flex-shrink: 0;
   width: 200px;
   height: 160px;
   border-radius: var(--rounded-md);
   overflow: hidden;
   cursor: pointer;
+  background-color: #0d1117;
+}
+
+.thumb-live-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  background: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(4px);
+  color: #3fb950;
+  border: 1px solid rgba(63, 185, 80, 0.4);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: var(--rounded-full);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-transform: uppercase;
 }
 
 .news-card-thumb img {
