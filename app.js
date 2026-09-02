@@ -516,6 +516,7 @@ function renderNewsFeed() {
           <div class="news-card-header">
             <div class="news-meta-left">
               <span class="agency-badge">${escapeHtml(item.agency)}</span>
+              ${item.isLive ? `<span class="badge-live-dispatch"><span class="pulse-dot-live"></span> REAL-TIME LIVE</span>` : ""}
               <span class="news-date">${escapeHtml(item.date)} · ${escapeHtml(item.timePHT)}</span>
             </div>
             <span class="news-doc-id">${escapeHtml(item.docNumber)}</span>

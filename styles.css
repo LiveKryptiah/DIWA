@@ -3037,3 +3037,196 @@ a {
 .circle-blue   { background-color: #3b82f6; }
 .circle-yellow { background-color: #f59e0b; }
 .circle-red    { background-color: #ef4444; }
+
+/* ==========================================================================
+   Real-Time Philippine Agency Telemetry & Live Sync System
+   ========================================================================== */
+
+.live-telemetry-bar {
+  background-color: #0d1117;
+  color: #e6edf3;
+  border-bottom: 1px solid #21262d;
+  font-family: var(--font-body);
+  font-size: 11px;
+  overflow: hidden;
+  position: relative;
+  z-index: 10;
+}
+
+.telemetry-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 34px;
+  padding: 0 var(--spacing-xl);
+  max-width: 1580px;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+.telemetry-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.telemetry-live-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(35, 134, 54, 0.2);
+  color: #3fb950;
+  border: 1px solid rgba(63, 185, 80, 0.3);
+  padding: 2px 8px;
+  border-radius: var(--rounded-full);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pulse-dot-live {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #3fb950;
+  box-shadow: 0 0 8px #3fb950;
+  animation: pulseDotLive 1.5s infinite ease-in-out;
+}
+
+@keyframes pulseDotLive {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.3); opacity: 0.5; }
+}
+
+.telemetry-ticker {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  white-space: nowrap;
+}
+
+.telemetry-ticker::-webkit-scrollbar {
+  display: none;
+}
+
+.telemetry-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #8b949e;
+  font-weight: 500;
+  transition: color 0.15s ease;
+  cursor: default;
+}
+
+.telemetry-item:hover {
+  color: #f0f6fc;
+}
+
+.telemetry-item-agency {
+  color: #58a6ff;
+  font-weight: 700;
+}
+
+.telemetry-item-val {
+  color: #f0f6fc;
+  font-weight: 600;
+}
+
+.telemetry-item-sep {
+  color: #30363d;
+}
+
+.telemetry-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.live-sync-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #8b949e;
+  font-size: 11px;
+}
+
+.live-sync-btn {
+  background: transparent;
+  border: 1px solid #30363d;
+  color: #c9d1d9;
+  border-radius: var(--rounded-full);
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.15s ease;
+}
+
+.live-sync-btn:hover {
+  background: #21262d;
+  border-color: #58a6ff;
+  color: #58a6ff;
+}
+
+.live-sync-btn.spinning svg {
+  animation: syncSpin 0.8s linear infinite;
+}
+
+@keyframes syncSpin {
+  100% { transform: rotate(360deg); }
+}
+
+/* Real-Time Live Badges on News Cards */
+.badge-live-dispatch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(35, 134, 54, 0.15);
+  color: #2da44e;
+  border: 1px solid rgba(45, 164, 78, 0.35);
+  padding: 2px 8px;
+  border-radius: var(--rounded-full);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.badge-live-dispatch .pulse-dot-live {
+  width: 5px;
+  height: 5px;
+}
+
+/* Seismic Live Card Styling */
+.seismic-alert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(218, 54, 51, 0.15);
+  color: #f85149;
+  border: 1px solid rgba(248, 81, 73, 0.35);
+  padding: 2px 8px;
+  border-radius: var(--rounded-full);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 900px) {
+  .telemetry-container {
+    padding: 0 var(--spacing-md);
+  }
+  .telemetry-right .live-sync-indicator {
+    display: none;
+  }
+}

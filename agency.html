@@ -98,6 +98,52 @@
         </ul>
       </div>
     </nav>
+
+    <!-- Real-Time Philippine Agency Telemetry Bar -->
+    <div class="live-telemetry-bar" id="liveTelemetryBar">
+      <div class="telemetry-container">
+        <div class="telemetry-left">
+          <span class="telemetry-live-tag">
+            <span class="pulse-dot-live"></span>
+            LIVE PHT SYNC
+          </span>
+        </div>
+
+        <div class="telemetry-ticker" id="telemetryTicker">
+          <div class="telemetry-item" id="telemetrySeismic">
+            <span class="telemetry-item-agency">DOST-PHIVOLCS</span>:
+            <span class="telemetry-item-val" id="telemetrySeismicVal"><span style="color:#f85149; font-weight:700;">Mag 5.2</span> · Sarangani <span style="color:#8b949e;">(Live)</span></span>
+          </div>
+          <span class="telemetry-item-sep">|</span>
+          <div class="telemetry-item" id="telemetryWeather">
+            <span class="telemetry-item-agency">DOST-PAGASA</span>:
+            <span class="telemetry-item-val" id="telemetryWeatherVal">Manila 32°C · Fair</span>
+          </div>
+          <span class="telemetry-item-sep">|</span>
+          <div class="telemetry-item" id="telemetryForex">
+            <span class="telemetry-item-agency">BSP FOREX</span>:
+            <span class="telemetry-item-val" id="telemetryForexVal">USD/PHP Live Rate</span>
+          </div>
+          <span class="telemetry-item-sep">|</span>
+          <div class="telemetry-item" id="telemetryGovCloud">
+            <span class="telemetry-item-agency">DICT GOVCLOUD</span>:
+            <span class="telemetry-item-val" id="telemetryGovCloudVal">API Gateway <span style="color:#3fb950;">● Operational (34ms)</span></span>
+          </div>
+        </div>
+
+        <div class="telemetry-right">
+          <span class="live-sync-indicator" id="liveSyncStatus">Updated just now</span>
+          <button class="live-sync-btn" id="manualSyncBtn" onclick="triggerManualSync()" title="Refresh live agency telemetry">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <polyline points="1 20 1 14 7 14"></polyline>
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+            </svg>
+            Sync
+          </button>
+        </div>
+      </div>
+    </div>
   </header>
 
   <!-- =========================================================================
@@ -254,6 +300,7 @@
   </div>
 
   <!-- Scripts -->
+  <script src="live-feed.js"></script>
   <script src="agency-data.js"></script>
   <script src="agency.js"></script>
 </body>
