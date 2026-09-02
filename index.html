@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DiWA — Republic of the Philippines National Agencies Wire</title>
+  <meta name="description" content="The unified public record and live wire for Philippine national agencies: DICT, DepEd, COA, COMELEC, DOH, DBM, DOST, and executive departments.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. Double-Decker National Editorial Navigation
+       ========================================================================= -->
+  <header class="editorial-header">
+    <!-- Upper Main Deck -->
+    <div class="nav-upper-bar">
+      <div class="nav-inner">
+        <div class="nav-left">
+          <a href="#" class="nav-brand" title="DiWA National Wire">
+            <img src="assets/logo.png" alt="DiWA Logo" class="nav-brand-logo">
+            <span class="nav-brand-sub">Gov.ph Wire</span>
+          </a>
+        </div>
+
+        <!-- Center Search Pill -->
+        <div class="nav-search-wrap">
+          <span class="search-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input 
+            type="text" 
+            id="navSearchInput" 
+            class="search-pill" 
+            placeholder="Search the entire national wire (DICT, DepEd, COA, COMELEC...)"
+            aria-label="Search releases"
+          >
+        </div>
+
+        <!-- Right Utility Cluster -->
+        <div class="nav-right">
+          <div class="nav-time-badge" id="navTimeBadge">
+            <span class="nav-status-dot"></span>
+            <span>09:49 PHT · Manila</span>
+          </div>
+          <div class="nav-weather-badge" id="navWeatherBadge">
+            <svg class="weather-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <span id="weatherTemp">32°C</span>
+            <span class="weather-divider">·</span>
+            <span id="weatherDesc">Partly Cloudy</span>
+          </div>
+          <a href="#newsFeedSection" class="button-secondary btn-compact">Subscribe Gazette</a>
+          <a href="#agencyDirectory" class="button-primary btn-compact" title="Browse Agency Directory">
+            <span>Agencies</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+          </a>
+          
+          <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle mobile menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lower Sub-Nav Bar (Agency Categories) -->
+    <nav class="nav-lower-bar">
+      <div class="nav-inner sub-nav-inner">
+        <button class="sub-nav-menu-trigger" onclick="document.getElementById('mobileNavDrawer').classList.toggle('open')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <span class="sub-nav-all-label">ALL AGENCIES</span>
+        </button>
+
+        <ul class="sub-nav-links">
+          <li><a href="index.html" class="active">TOP DISPATCHES</a></li>
+          <li><a href="dict.html">DICT</a></li>
+          <li><a href="deped.html">DEPED</a></li>
+          <li><a href="coa.html">COA</a></li>
+          <li><a href="comelec.html">COMELEC</a></li>
+          <li><a href="doh.html">DOH</a></li>
+          <li><a href="dbm.html">DBM</a></li>
+          <li><a href="dost.html">DOST</a></li>
+          <li><a href="dswd.html">DSWD</a></li>
+          <li><a href="neda.html">NEDA</a></li>
+          <li><a href="#liveWireSection" class="sub-nav-wire-link">LIVE WIRE ⚡</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-drawer" id="mobileNavDrawer">
+      <ul class="mobile-nav-links">
+        <li><a href="#newsFeedSection" onclick="document.getElementById('mobileNavDrawer').classList.remove('open')">Dispatches</a></li>
+        <li><a href="#agencyDirectory" onclick="document.getElementById('mobileNavDrawer').classList.remove('open')">National Agencies</a></li>
+        <li><a href="#liveWireSection" onclick="document.getElementById('mobileNavDrawer').classList.remove('open')">Live Wire Terminal</a></li>
+        <li><a href="#transparencySection" onclick="document.getElementById('mobileNavDrawer').classList.remove('open')">Transparency & FOI</a></li>
+        <li><a href="#faqSection" onclick="document.getElementById('mobileNavDrawer').classList.remove('open')">FAQ</a></li>
+      </ul>
+      <div style="margin-top: 16px;">
+        <button class="button-primary" style="width: 100%;" onclick="document.getElementById('mobileNavDrawer').classList.remove('open'); filterByAgency('all');">
+          Browse All 34 Agencies
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       2. USA TODAY-STYLE EDITORIAL HERO SECTION
+       ========================================================================= -->
+  <main>
+    <section class="editorial-hero">
+      <!-- Ambient National Watermark & SVG Backdrop -->
+      <div class="hero-watermark">REPUBLIKA NG PILIPINAS</div>
+
+      <div class="grid-container hero-editorial-grid">
+        <!-- Left Main Story Feature -->
+        <div class="hero-main-column">
+          <div class="hero-cat-badge-wrap">
+            <span class="hero-cat-pill" id="heroStoryPill">POLITICS & GOVERNANCE · DICT</span>
+          </div>
+
+          <h1 class="hero-editorial-title" id="heroStoryTitle">
+            How the Philippines is Unifying All National Agency Records with the DiWA Wire
+          </h1>
+
+          <p class="hero-editorial-excerpt" id="heroStoryExcerpt">
+            A landmark memorandum circular directs thirty-four executive departments, constitutional commissions, and attached bureaus to synchronize public registries into a single cryptographic wire by Q4 2026.
+          </p>
+
+          <div class="hero-story-action-strip">
+            <button class="button-pill-on-dark" id="heroReadBtn" onclick="openDispatchModal('dict-2026-01')">
+              → Read Full Story
+            </button>
+
+            <div class="hero-related-pills">
+              <button class="hero-chip-pill" onclick="openDispatchModal('comelec-2026-01')">COMELEC Audit</button>
+              <button class="hero-chip-pill" onclick="openDispatchModal('coa-2026-01')">COA Report</button>
+            </div>
+
+            <!-- Story Pagination Dots (01 02 03 04) -->
+            <div class="hero-pagination-cluster">
+              <button class="hero-page-pill active" onclick="switchHeroStory(0)">01</button>
+              <button class="hero-page-pill" onclick="switchHeroStory(1)">02</button>
+              <button class="hero-page-pill" onclick="switchHeroStory(2)">03</button>
+              <button class="hero-page-pill" onclick="switchHeroStory(3)">04</button>
+            </div>
+          </div>
+               </div>      </div>
+
+      <!-- Bottom Docked Strip: 4 Horizontal News Cards (USA Today Dock) -->
+      <div class="hero-dock-container">
+        <div class="grid-container hero-dock-grid">
+          <!-- Dock Card 1: DepEd -->
+          <article class="dock-card" onclick="openDispatchModal('deped-2026-01')">
+            <div class="dock-card-thumb-wrap">
+              <img src="assets/thumb-deped.jpg" alt="DepEd Learning" class="dock-card-thumb">
+            </div>
+            <div class="dock-card-content">
+              <h5 class="dock-card-title">DepEd: MATATAG Curriculum Open Learning Commons & AI Pedagogy</h5>
+              <div class="dock-card-meta">Basic Education · 2h ago</div>
+            </div>
+          </article>
+
+          <!-- Dock Card 2: DOH -->
+          <article class="dock-card" onclick="openDispatchModal('doh-2026-01')">
+            <div class="dock-card-thumb-wrap">
+              <img src="assets/thumb-doh.jpg" alt="DOH Health" class="dock-card-thumb">
+            </div>
+            <div class="dock-card-content">
+              <h5 class="dock-card-title">Universal Health Care Primary Care Network: PhilHealth Konsulta Rollout</h5>
+              <div class="dock-card-meta">Public Health · 3h ago</div>
+            </div>
+          </article>
+
+          <!-- Dock Card 3: DBM -->
+          <article class="dock-card" onclick="openDispatchModal('dbm-2026-01')">
+            <div class="dock-card-thumb-wrap">
+              <img src="assets/thumb-dbm.jpg" alt="DBM Budget" class="dock-card-thumb">
+            </div>
+            <div class="dock-card-content">
+              <h5 class="dock-card-title">FY 2027 National Budget Circular: Cash Budgeting & Climate Tagging</h5>
+              <div class="dock-card-meta">Fiscal Policy · 4h ago</div>
+            </div>
+          </article>
+
+          <!-- Dock Card 4: DOST -->
+          <article class="dock-card" onclick="openDispatchModal('dost-2026-01')">
+            <div class="dock-card-thumb-wrap">
+              <img src="assets/thumb-dost.jpg" alt="DOST Satellite" class="dock-card-thumb">
+            </div>
+            <div class="dock-card-content">
+              <h5 class="dock-card-title">PhilSA Diwata-3 Earth Observation Satellite Ground Data Sharing Service</h5>
+              <div class="dock-card-meta">Space & Science · 5h ago</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         2.5. Editorial Mosaic & Top Stories Ranked Sidebar (USA Today Grid)
+         ========================================================================= -->
+    <section class="magazine-fullscreen-section grid-container" id="editorialMosaicSection">
+      <div class="magazine-layout">
+        <!-- Left Column: Agency In-Depth Spotlights -->
+        <div class="magazine-main">
+          <div class="magazine-section-header">
+            <h3 class="magazine-section-title">National Spotlights <span class="three-circles-row"><span class="circle circle-blue"></span><span class="circle circle-yellow"></span><span class="circle circle-red"></span></span></h3>
+            <div class="magazine-carousel-controls">
+              <button class="mag-arrow-btn" aria-label="Previous">‹</button>
+              <div class="mag-dots">
+                <span class="mag-dot active"></span>
+                <span class="mag-dot"></span>
+                <span class="mag-dot"></span>
+              </div>
+              <button class="mag-arrow-btn" aria-label="Next">›</button>
+            </div>
+          </div>
+
+          <div class="mosaic-grid">
+            <!-- Mosaic Card 1: Tall Left (DICT) -->
+            <article class="mosaic-card mosaic-tall" onclick="openDispatchModal('dict-2026-01')">
+              <img src="assets/mosaic-dict-tall.jpg" alt="DICT Fiber Infrastructure" class="mosaic-img">
+              <div class="mosaic-overlay">
+                <span class="mosaic-tag-pill pill-dict">DICT</span>
+                <h4 class="mosaic-title">DICT Expands National Fiber Backbone & Free Wi-Fi 4 All to 420 Island Schools</h4>
+              </div>
+            </article>
+
+            <!-- Mosaic Card 2: Top Wide Center (COMELEC) -->
+            <article class="mosaic-card mosaic-wide" onclick="openDispatchModal('comelec-2026-01')">
+              <img src="assets/mosaic-election.jpg" alt="COMELEC Ballot Verification" class="mosaic-img">
+              <div class="mosaic-overlay">
+                <span class="mosaic-tag-pill pill-comelec">COMELEC</span>
+                <h4 class="mosaic-title">En Banc Promulgates Open Audit Protocols for Automated Election Optical Mark Readers</h4>
+              </div>
+            </article>
+
+            <!-- Mosaic Card 3: Top Right (COA) -->
+            <article class="mosaic-card mosaic-square" onclick="openDispatchModal('coa-2026-01')">
+              <img src="assets/mosaic-audit.jpg" alt="COA Audit Ledger" class="mosaic-img">
+              <div class="mosaic-overlay">
+                <span class="mosaic-tag-pill pill-coa">COA</span>
+                <h4 class="mosaic-title">Consolidated Annual Audit Findings on Digital Infrastructure Procurement</h4>
+              </div>
+            </article>
+
+            <!-- Mosaic Card 4: Bottom Center 1 (DEPED) -->
+            <article class="mosaic-card" onclick="openDispatchModal('deped-2026-01')">
+              <img src="assets/mosaic-students.jpg" alt="DepEd Learning" class="mosaic-img">
+              <div class="mosaic-overlay">
+                <span class="mosaic-tag-pill pill-deped">DEPED</span>
+                <h4 class="mosaic-title">MATATAG Curriculum Open Commons Deployed Across 47,000 Schools</h4>
+              </div>
+            </article>
+
+            <!-- Mosaic Card 5: Bottom Center 2 (DOH) -->
+            <article class="mosaic-card" onclick="openDispatchModal('doh-2026-01')">
+              <img src="assets/mosaic-health.jpg" alt="DOH Health" class="mosaic-img">
+              <div class="mosaic-overlay">
+                <span class="mosaic-tag-pill pill-doh">DOH</span>
+                <h4 class="mosaic-title">Universal Health Care: 2,450 Primary Care Clinics Formally Accredited</h4>
+              </div>
+            </article>
+
+            <!-- Mosaic Card 6: Bottom Center 3 (DOST) -->
+            <article class="mosaic-card" onclick="openDispatchModal('dost-2026-01')">
+              <img src="assets/mosaic-satellite.jpg" alt="DOST Satellite" class="mosaic-img">
+              <div class="mosaic-overlay">
+                <span class="mosaic-tag-pill pill-dost">DOST</span>
+                <h4 class="mosaic-title">PhilSA Diwata-3 Earth Observation Satellite Downlink Live for LGUs</h4>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <!-- Right Column: Top Stories Ranked 1 to 6 -->
+        <aside class="magazine-sidebar">
+          <div class="magazine-section-header">
+            <h3 class="magazine-section-title">Top Stories</h3>
+            <div class="magazine-carousel-controls">
+              <button class="mag-arrow-btn" aria-label="Previous">‹</button>
+              <div class="mag-dots">
+                <span class="mag-dot active"></span>
+                <span class="mag-dot"></span>
+                <span class="mag-dot"></span>
+              </div>
+              <button class="mag-arrow-btn" aria-label="Next">›</button>
+            </div>
+          </div>
+
+          <div class="ranked-stories-list">
+            <!-- Rank Item 1 -->
+            <article class="ranked-story-item" onclick="openDispatchModal('dict-2026-01')">
+              <div class="ranked-thumb-wrap">
+                <img src="assets/thumb-dict.jpg" alt="DICT" class="ranked-thumb">
+              </div>
+              <div class="ranked-content">
+                <h5 class="ranked-title">Unified Philippine API Gateway Mandate Enacted for All Agencies</h5>
+                <div class="ranked-meta">DICT · 2 hours ago</div>
+              </div>
+              <div class="ranked-num">1</div>
+            </article>
+
+            <!-- Rank Item 2 -->
+            <article class="ranked-story-item" onclick="openDispatchModal('comelec-2026-01')">
+              <div class="ranked-thumb-wrap">
+                <img src="assets/thumb-comelec.jpg" alt="COMELEC" class="ranked-thumb">
+              </div>
+              <div class="ranked-content">
+                <h5 class="ranked-title">COMELEC Institutionalizes Source Code Escrow & Optical Mark Audit</h5>
+                <div class="ranked-meta">COMELEC · 3 hours ago</div>
+              </div>
+              <div class="ranked-num">2</div>
+            </article>
+
+            <!-- Rank Item 3 -->
+            <article class="ranked-story-item" onclick="openDispatchModal('coa-2026-01')">
+              <div class="ranked-thumb-wrap">
+                <img src="assets/thumb-coa.jpg" alt="COA" class="ranked-thumb">
+              </div>
+              <div class="ranked-content">
+                <h5 class="ranked-title">COA Transmits Consolidated Annual Financial Report to Congress</h5>
+                <div class="ranked-meta">COA · 4 hours ago</div>
+              </div>
+              <div class="ranked-num">3</div>
+            </article>
+
+            <!-- Rank Item 4 -->
+            <article class="ranked-story-item" onclick="openDispatchModal('deped-2026-01')">
+              <div class="ranked-thumb-wrap">
+                <img src="assets/thumb-deped.jpg" alt="DepEd" class="ranked-thumb">
+              </div>
+              <div class="ranked-content">
+                <h5 class="ranked-title">DepEd Digital Learning Modules Standardized Under MATATAG Commons</h5>
+                <div class="ranked-meta">DepEd · 5 hours ago</div>
+              </div>
+              <div class="ranked-num">4</div>
+            </article>
+
+            <!-- Rank Item 5 -->
+            <article class="ranked-story-item" onclick="openDispatchModal('doh-2026-01')">
+              <div class="ranked-thumb-wrap">
+                <img src="assets/thumb-doh.jpg" alt="DOH" class="ranked-thumb">
+              </div>
+              <div class="ranked-content">
+                <h5 class="ranked-title">PhilHealth Konsulta Guarantees Zero Out-of-Pocket Diagnostic Bundles</h5>
+                <div class="ranked-meta">DOH · 6 hours ago</div>
+              </div>
+              <div class="ranked-num">5</div>
+            </article>
+
+            <!-- Rank Item 6 -->
+            <article class="ranked-story-item" onclick="openDispatchModal('dost-2026-01')">
+              <div class="ranked-thumb-wrap">
+                <img src="assets/thumb-dost.jpg" alt="DOST" class="ranked-thumb">
+              </div>
+              <div class="ranked-content">
+                <h5 class="ranked-title">PhilSA Satellite Mapping Feeds Opened for Municipal Disaster Response</h5>
+                <div class="ranked-meta">DOST · 7 hours ago</div>
+              </div>
+              <div class="ranked-num">6</div>
+            </article>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+
+
+    <!-- =========================================================================
+         5. Agency Filter & News Feed Section
+         ========================================================================= -->
+    <section class="section-spacer grid-container" id="newsFeedSection">
+      <!-- Filter Bar -->
+      <div class="filter-section" style="margin-bottom: 32px;">
+        <div class="filter-group-header">
+          <span class="typography-body-sm-strong">Filter by National Agency:</span>
+        </div>
+
+        <div class="filter-pills-row">
+          <button class="filter-pill active" data-agency-filter="all">All Agencies</button>
+          <button class="filter-pill" data-agency-filter="dict">DICT</button>
+          <button class="filter-pill" data-agency-filter="deped">DepEd</button>
+          <button class="filter-pill" data-agency-filter="coa">COA</button>
+          <button class="filter-pill" data-agency-filter="comelec">COMELEC</button>
+          <button class="filter-pill" data-agency-filter="doh">DOH</button>
+          <button class="filter-pill" data-agency-filter="dbm">DBM</button>
+          <button class="filter-pill" data-agency-filter="dost">DOST</button>
+          <button class="filter-pill" data-agency-filter="dswd">DSWD</button>
+          <button class="filter-pill" data-agency-filter="neda">NEDA</button>
+        </div>
+      </div>
+
+      <!-- News Section Header -->
+      <div class="news-section-header">
+        <h2 class="typography-heading-lg">Official Dispatches & Circulars</h2>
+        <span class="news-count-badge" id="newsCountBadge">Loading issuances...</span>
+      </div>
+
+      <!-- News Card Feed List -->
+      <div class="news-feed-list" id="newsFeedList">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         6. Inverted Dark Section (The Single Inverted Moment per Design MD)
+         ========================================================================= -->
+    <section class="section-spacer grid-container">
+      <div class="pricing-card-dark">
+        <div class="card-dark-eyebrow">
+          <span>●</span>
+          <span>National Priority Executive Directive</span>
+        </div>
+
+        <h2 class="card-dark-headline">
+          Executive Order No. 82: Inter-Agency Digital Governance & Data Harmonization Framework
+        </h2>
+
+        <p class="card-dark-body">
+          Directs all thirty-four (34) executive departments, attached bureaus, and constitutional commissions to synchronize national registries into the DiWA open public wire by October 2026 to ensure public accountability and eliminate bureaucratic delays.
+        </p>
+
+        <div class="card-dark-meta-row">
+          <span class="card-dark-meta-item">STATUS: ENFORCED</span>
+          <span>·</span>
+          <span class="card-dark-meta-item">TARGET: ALL LINE AGENCIES</span>
+          <span>·</span>
+          <span class="card-dark-meta-item">AUDIT: COA-VERIFIED</span>
+        </div>
+
+        <div class="card-dark-actions">
+          <button class="button-pill-on-dark" onclick="openDispatchModal('dict-2026-01')">
+            Read Full Executive Framework →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         7. Agency Directory (3-up Pricing Card Style)
+         ========================================================================= -->
+    <section class="section-spacer grid-container" id="agencyDirectory">
+      <div class="directory-header">
+        <h2 class="typography-display-lg" style="margin-bottom: 8px;">Key National Agencies</h2>
+        <p class="typography-body-md">Constitutional bodies and cabinet portfolios publishing to the DiWA public feed.</p>
+      </div>
+
+      <div class="directory-grid" id="directoryGrid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         8. Transparency & Data Trust Section
+         ========================================================================= -->
+    <section class="section-spacer grid-container" id="transparencySection">
+      <div class="transparency-box">
+        <div class="transparency-icon-wrap">
+          <!-- Stroke-only lock icon per Design MD -->
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+            <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+          </svg>
+        </div>
+
+        <div class="transparency-content">
+          <h3 class="transparency-title">Your data and public trust stays yours.</h3>
+          <p class="transparency-text">
+            Every document published on DiWA carries an immutable cryptographic hash matched against agency public keys. Under Executive Order No. 2 (s. 2016) on Freedom of Information, all circulars, en banc resolutions, and annual audit reports are public property without copyright barriers or monetization paywalls.
+          </p>
+          <div style="margin-top: 8px;">
+            <a href="https://www.foi.gov.ph" target="_blank" rel="noopener" class="link-inline">
+              Access the National e-FOI Portal →
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         9. FAQ Section (Stacked Plain Hairline Rows)
+         ========================================================================= -->
+    <section class="section-bottom-space grid-container" id="faqSection">
+      <div class="faq-header">
+        <h2 class="typography-display-lg">Frequently asked questions</h2>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-row">
+          <h3 class="faq-question">How frequently are agency feeds synchronized?</h3>
+          <p class="faq-answer">
+            Official RSS and JSON webhook endpoints are polled every 60 seconds. High-priority advisories from NDRRMC, DOH, and COMELEC are pushed instantaneously via direct government gateway feeds.
+          </p>
+        </div>
+
+        <div class="faq-row">
+          <h3 class="faq-question">How can journalists and civic developers consume the raw data?</h3>
+          <p class="faq-answer">
+            The raw wire is available via public REST endpoints at <code>https://diwa.gov.ph/api/v1/feed.json</code> and standard RSS feeds per agency. No API key or rate limit tiering is required for public interest and academic monitoring.
+          </p>
+        </div>
+
+        <div class="faq-row">
+          <h3 class="faq-question">Are documents on DiWA legally recognized?</h3>
+          <p class="faq-answer">
+            Yes. All published circulars and orders correspond to official issuances published in the Official Gazette of the Republic of the Philippines or certified by the head of the issuing department pursuant to Section 18 of Executive Order No. 292.
+          </p>
+        </div>
+
+        <div class="faq-row">
+          <h3 class="faq-question">How can an agency integrate its public feed into DiWA?</h3>
+          <p class="faq-answer">
+            Agency IT teams can register their automated dispatch endpoints through the DICT National Government Portal 3.0 Interoperability Working Group. See our developer documentation or contact <a href="mailto:interop@diwa.gov.ph" class="link-mute">interop@diwa.gov.ph</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       10. Footer
+       ========================================================================= -->
+  <footer class="footer-section">
+    <div class="footer-inner">
+      <ul class="footer-links">
+        <li><a href="#" onclick="filterByAgency('dict'); return false;">DICT</a></li>
+        <li><a href="#" onclick="filterByAgency('deped'); return false;">DepEd</a></li>
+        <li><a href="#" onclick="filterByAgency('coa'); return false;">COA</a></li>
+        <li><a href="#" onclick="filterByAgency('comelec'); return false;">COMELEC</a></li>
+        <li><a href="#" onclick="filterByAgency('doh'); return false;">DOH</a></li>
+        <li><a href="#" onclick="filterByAgency('dbm'); return false;">DBM</a></li>
+        <li><a href="https://www.officialgazette.gov.ph" target="_blank" rel="noopener">Official Gazette</a></li>
+        <li><a href="https://www.foi.gov.ph" target="_blank" rel="noopener">e-FOI</a></li>
+        <li><a href="#" onclick="copyToClipboard('https://diwa.gov.ph/api/v1/feed.json', 'RSS feed URL copied'); return false;">RSS Feed</a></li>
+        <li><a href="#faqSection">API Docs</a></li>
+      </ul>
+
+      <div class="footer-copyright">
+        © 2026 DiWA · Republic of the Philippines Public Information Wire
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       11. Dispatch Modal Reader
+       ========================================================================= -->
+  <div class="modal-backdrop" id="dispatchModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-container">
+      <div class="modal-header">
+        <span class="typography-body-sm-strong">Official Document Viewer</span>
+        <button class="modal-close-btn" onclick="closeDispatchModal()" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body" id="modalDynamicContent">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <div class="modal-footer">
+        <button class="button-secondary" onclick="copyModalMarkdown()">
+          Copy as Markdown
+        </button>
+        <button class="button-primary" onclick="window.print()">
+          Print / Save Record
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<svg width="320" height="200" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="200" fill="#242017"/>
+  <rect x="1" y="1" width="318" height="198" stroke="#333333" stroke-width="1" fill="none"/>
+  
+  <rect x="115" y="65" width="90" height="65" rx="5" fill="#332d20" stroke="#61563d" stroke-width="2"/>
+  <circle cx="160" cy="98" r="18" fill="#fcd116" fill-opacity="0.25" stroke="#fcd116" stroke-width="2"/>
+  <text x="160" y="105" fill="#fcd116" font-size="20" font-weight="bold" text-anchor="middle" font-family="sans-serif">₱</text>
+  <text x="160" y="168" fill="#a89a78" font-size="11" font-weight="600" text-anchor="middle" font-family="sans-serif">BUDGET CIRCULAR</text>
+
+</svg>

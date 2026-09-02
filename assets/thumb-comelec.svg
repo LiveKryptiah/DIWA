@@ -1,0 +1,11 @@
+<svg width="320" height="200" viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="320" height="200" fill="#161c18"/>
+  <rect x="1" y="1" width="318" height="198" stroke="#333333" stroke-width="1" fill="none"/>
+  
+  <rect x="110" y="55" width="100" height="90" rx="6" fill="#202922" stroke="#37523f" stroke-width="2"/>
+  <rect x="135" y="40" width="50" height="25" rx="3" fill="#2c3a30" stroke="#37523f" stroke-width="2"/>
+  <line x1="145" y1="52" x2="175" y2="52" stroke="#fcd116" stroke-width="3" stroke-linecap="round"/>
+  <path d="M130 105 L145 120 L190 80" stroke="#27c93f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="160" y="168" fill="#8ca893" font-size="11" font-weight="600" text-anchor="middle" font-family="sans-serif">OPTICAL AUDIT</text>
+
+</svg>

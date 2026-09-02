@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agency Portal — DiWA | Republic of the Philippines</title>
+  <meta name="description" content="Official dispatches, directives, and real-time public records archive for Philippine National Government Agencies.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Google Fonts: Nunito (SF Pro Rounded feel), Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       1. Top Sticky Navigation Bar (Double-Decker Header)
+       ========================================================================= -->
+  <header class="editorial-header" id="mainHeader">
+    <!-- Upper Main Deck -->
+    <div class="nav-upper-bar">
+      <div class="nav-inner">
+        <div class="nav-left">
+          <a href="index.html" class="nav-brand" title="DiWA National Wire">
+            <img src="assets/logo.png" alt="DiWA Logo" class="nav-brand-logo">
+            <span class="nav-brand-sub">Gov.ph Wire</span>
+          </a>
+        </div>
+
+        <!-- Center Search Pill -->
+        <div class="nav-search-wrap">
+          <span class="search-icon">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </span>
+          <input 
+            type="text" 
+            id="navSearchInput" 
+            class="search-pill" 
+            placeholder="Search this agency or entire wire..." 
+            aria-label="Search releases"
+          >
+        </div>
+
+        <!-- Right Utility Cluster -->
+        <div class="nav-right">
+          <div class="nav-time-badge" id="navTimeBadge">
+            <span class="nav-status-dot"></span>
+            <span id="manilaLiveClock">--:--:-- PHT · Manila</span>
+          </div>
+
+          <button class="button-secondary btn-compact" id="gazetteBtn" onclick="alert('Subscribed to official department gazette alerts.');">
+            Subscribe Gazette
+          </button>
+
+          <a href="index.html#agencyDirectory" class="button-primary btn-compact" title="Browse Agency Directory">
+            <span>Agencies</span>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lower Sub-Nav Bar (Agency Categories) -->
+    <nav class="nav-lower-bar">
+      <div class="nav-inner sub-nav-inner">
+        <a href="index.html#agencyDirectory" class="sub-nav-menu-trigger" style="text-decoration: none;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <span class="sub-nav-all-label">ALL AGENCIES</span>
+        </a>
+
+        <ul class="sub-nav-links">
+          <li><a href="index.html">TOP DISPATCHES</a></li>
+          <li><a href="dict.html" data-agency-target="dict">DICT</a></li>
+          <li><a href="deped.html" data-agency-target="deped">DEPED</a></li>
+          <li><a href="coa.html" data-agency-target="coa">COA</a></li>
+          <li><a href="comelec.html" data-agency-target="comelec">COMELEC</a></li>
+          <li><a href="doh.html" data-agency-target="doh">DOH</a></li>
+          <li><a href="dbm.html" data-agency-target="dbm">DBM</a></li>
+          <li><a href="dost.html" data-agency-target="dost">DOST</a></li>
+          <li><a href="dswd.html" data-agency-target="dswd">DSWD</a></li>
+          <li><a href="neda.html" data-agency-target="neda">NEDA</a></li>
+          <li><a href="index.html#liveWireSection" class="sub-nav-wire-link">LIVE WIRE ⚡</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- =========================================================================
+       Main Content (Agency Magazine Spread)
+       ========================================================================= -->
+  <main class="grid-container agency-page-main">
+    <!-- Breadcrumb Navigation -->
+    <nav class="agency-breadcrumbs" aria-label="Breadcrumb">
+      <a href="index.html">DiWA</a>
+      <span class="crumb-sep">/</span>
+      <a href="index.html#agencyDirectory">National Agencies</a>
+      <span class="crumb-sep">/</span>
+      <span class="crumb-active" id="agencyBreadcrumbName">Loading Agency...</span>
+    </nav>
+
+    <!-- Agency Profile Header Bar -->
+    <section class="agency-profile-header">
+      <div class="agency-profile-info">
+        <div class="agency-profile-badge-row">
+          <span class="agency-profile-badge" id="agencyProfileBadge">AGENCY</span>
+          <span class="agency-profile-lead" id="agencyProfileLead">Department Head</span>
+        </div>
+        <h1 class="agency-profile-title" id="agencyProfileFullName">National Agency</h1>
+        <p class="agency-profile-mandate" id="agencyProfileMandate">Mandate summary loading...</p>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         2. Upper Magazine Tier: Featured Story + Latest Dispatches (media_1787798556458.png)
+         ========================================================================= -->
+    <section class="agency-featured-grid">
+      <!-- Left Column (~65% width): Large Hero Card -->
+      <div class="agency-feature-col" id="agencyFeatureContainer">
+        <!-- Rendered dynamically via agency.js -->
+      </div>
+
+      <!-- Right Column (~35% width): Latest Dispatches (4 stacked items) -->
+      <div class="agency-latest-col">
+        <div class="agency-col-header">
+          <h3 class="agency-col-title">Latest post</h3>
+        </div>
+        <div class="agency-latest-list" id="agencyLatestList">
+          <!-- Rendered dynamically via agency.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         3. Lower Magazine Tier: Key Initiatives & Circulars 3-Up Grid (Founders Corner Style)
+         ========================================================================= -->
+    <section class="agency-initiatives-section">
+      <div class="agency-initiatives-header">
+        <h3 class="agency-initiatives-title">Founders corner</h3>
+        <div class="agency-carousel-arrows">
+          <button class="arrow-round-btn" aria-label="Previous page">←</button>
+          <button class="arrow-round-btn" aria-label="Next page">→</button>
+        </div>
+      </div>
+
+      <div class="agency-initiatives-grid" id="agencyInitiativesGrid">
+        <!-- Rendered dynamically via agency.js (3-up cards) -->
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         4. Numbered Pagination Controls (Matching media_1787798556458.png)
+         ========================================================================= -->
+    <section class="agency-pagination-wrap">
+      <div class="agency-pagination">
+        <button class="page-arrow" aria-label="Previous Page">←</button>
+        <button class="page-num active">1</button>
+        <button class="page-num">2</button>
+        <button class="page-num">3</button>
+        <button class="page-num">4</button>
+        <button class="page-num">5</button>
+        <button class="page-arrow" aria-label="Next Page">→</button>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         5. Signature CLI Snippet Pill
+         ========================================================================= -->
+    <section class="section-spacer">
+      <div class="signature-snippet-center">
+        <div class="install-snippet">
+          <code class="install-snippet-code" id="agencyCurlCode">
+            <span class="prefix">curl -fsSL </span>https://diwa.gov.ph/api/v1/agency/dict | jq .
+          </code>
+          <button class="copy-btn" id="copyInstallBtn" title="Copy CLI command" aria-label="Copy agency curl command">
+            <span class="copy-tooltip" id="copyTooltip">Copied</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================================
+       6. Footer
+       ========================================================================= -->
+  <footer class="footer-section">
+    <div class="footer-inner">
+      <ul class="footer-links">
+        <li><a href="dict.html">DICT</a></li>
+        <li><a href="deped.html">DepEd</a></li>
+        <li><a href="coa.html">COA</a></li>
+        <li><a href="comelec.html">COMELEC</a></li>
+        <li><a href="doh.html">DOH</a></li>
+        <li><a href="dbm.html">DBM</a></li>
+        <li><a href="dost.html">DOST</a></li>
+        <li><a href="dswd.html">DSWD</a></li>
+        <li><a href="neda.html">NEDA</a></li>
+        <li><a href="https://www.officialgazette.gov.ph" target="_blank" rel="noopener">Official Gazette</a></li>
+        <li><a href="https://www.foi.gov.ph" target="_blank" rel="noopener">e-FOI</a></li>
+      </ul>
+
+      <div class="footer-copyright">
+        © 2026 DiWA · Republic of the Philippines Public Information Wire
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       7. Dispatch Modal Reader
+       ========================================================================= -->
+  <div class="modal-backdrop" id="dispatchModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-container">
+      <div class="modal-header">
+        <span class="typography-body-sm-strong">Official Document Viewer</span>
+        <button class="modal-close-btn" onclick="closeAgencyModal()" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body" id="modalDynamicContent">
+        <!-- Rendered dynamically by agency.js -->
+      </div>
+
+      <div class="modal-footer">
+        <button class="button-secondary" onclick="copyModalMarkdown()">
+          Copy as Markdown
+        </button>
+        <button class="button-primary" onclick="window.print()">
+          Print / Save Record
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="agency-data.js"></script>
+  <script src="agency.js"></script>
+</body>
+</html>

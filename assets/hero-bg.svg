@@ -1,0 +1,15 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1440" height="900" fill="#171717"/>
+  <!-- Subtle national triangle geometry in deep charcoal tones -->
+  <path d="M0 0 L650 450 L0 900 Z" fill="#1a1a1a" fill-opacity="0.7"/>
+  <!-- Central sun motif -->
+  <circle cx="200" cy="450" r="90" stroke="#262626" stroke-width="2" fill="none"/>
+  <circle cx="200" cy="450" r="40" fill="#202020"/>
+  <!-- Radial golden light accents -->
+  <line x1="200" y1="310" x2="200" y2="380" stroke="#fcd116" stroke-opacity="0.2" stroke-width="3" stroke-linecap="round"/>
+  <line x1="200" y1="520" x2="200" y2="590" stroke="#fcd116" stroke-opacity="0.2" stroke-width="3" stroke-linecap="round"/>
+  <line x1="60" y1="450" x2="130" y2="450" stroke="#0038a8" stroke-opacity="0.3" stroke-width="3" stroke-linecap="round"/>
+  <line x1="270" y1="450" x2="340" y2="450" stroke="#ce1126" stroke-opacity="0.3" stroke-width="3" stroke-linecap="round"/>
+  <!-- Subtle digital grid overlay -->
+  <path d="M0 225 H1440 M0 450 H1440 M0 675 H1440 M360 0 V900 M720 0 V900 M1080 0 V900" stroke="#222222" stroke-width="1" stroke-opacity="0.5" stroke-dasharray="4 10"/>
+</svg>
